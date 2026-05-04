@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source "$HOME/.local/lib/help.sh"
+set -e
+
+check_help "$1" && show_help "list files matching a pattern (ls -lhaZ with grep)" && exit 0
+
+if [ -z "${1:-}" ]; then
+    show_help "list files matching a pattern (ls -lhaZ with grep)" >&2
+    exit 1
+fi
+
+# shellcheck disable=SC2010
+ls -lhaZ --color=auto | grep "$1"

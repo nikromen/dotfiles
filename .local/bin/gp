@@ -1,0 +1,39 @@
+#!/bin/bash
+
+source "$HOME/.local/lib/help.sh"
+source "$HOME/.local/share/vercajk/bash_functions/bash_private_functions.sh"
+
+set -e
+
+check_help "$1" && show_help "git push with safety check for main branch" \
+    "Usage: gp [REMOTE] [BRANCH] [ARGS...]
+
+Pushes current branch to remote. If pushing to main/master,
+waits 5 seconds to allow cancellation." && exit 0
+
+if [[ -n "$1" ]]; then
+    remote=$(get_remote "$1")
+    shift
+else
+    remote="origin"
+fi
+
+if [[ -n "$1" ]]; then
+    git push "$remote" "$@"
+    exit 0
+fi
+
+if [[ -n "$1" ]]; then
+    branch="$1"
+else
+    branch=$(git branch --show-current)
+fi
+
+main=$(get_default_main_branch)
+if [[ "$branch" = "$main" ]]; then
+    echo "You are going to push to ${remote}/${main} branch"
+    echo "Waiting 5 seconds... Press ENTER to push NOW or Ctrl+C to cancel."
+    read -t 5 -r || true
+fi
+
+git push "$remote" "$branch"

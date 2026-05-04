@@ -1,0 +1,55 @@
+#!/bin/bash
+
+source "$HOME/.local/lib/help.sh"
+set -e
+
+HELP_DETAILS="Arguments:
+  COUNT   How many commits to squash from HEAD (default: 1)
+
+Options:
+  -a, --autocommit   Commit staged changes before fixup
+  -h, --help         Show this message"
+
+usage() { show_help "squash last N commits into one (git rebase fixup)" "$HELP_DETAILS"; }
+
+main() {
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -h|--help)
+                usage
+                exit 0
+                ;;
+            -a|--autocommit)
+                echo "Autocommitting staged changes..."
+                git commit -m "Autocommit before fixup"
+                ;;
+            *)
+                break
+                ;;
+        esac
+        shift
+    done
+
+    if [ $# -gt 1 ]; then
+        usage
+        exit 1
+    fi
+
+    local count
+    if [ $# -eq 0 ]; then
+        count=1
+    else
+        count=$1
+    fi
+
+    if ! [[ "$count" =~ ^[0-9]+$ ]]; then
+        echo "Error: count must be a positive integer" >&2
+        exit 1
+    fi
+
+    echo "Fixing up the last $count commits..."
+    git reset --soft "HEAD~${count}"
+    git commit --amend --no-edit
+}
+
+main "$@"

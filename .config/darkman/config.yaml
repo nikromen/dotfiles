@@ -1,0 +1,6 @@
+# lat/lng for Prague (auto sunrise/sunset switching)
+lat: 50.08
+lng: 14.42
+usegeoclue: false
+dbusserver: true
+portal: true

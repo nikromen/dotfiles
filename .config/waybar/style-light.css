@@ -1,0 +1,140 @@
+* {
+    border: none;
+    border-radius: 10px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#waybar {
+    background: transparent;
+    color: #4c4f69;
+    font-size: 14px;
+    font-family: "Symbols Nerd Font";
+}
+
+#tray menu menuitem {
+    min-height: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin: 0.2rem 0.4rem;
+}
+
+#custom-powermenu,
+#custom-notification,
+#cpu,
+#temperature,
+#memory,
+#workspaces,
+#language,
+#clock,
+#pulseaudio,
+#battery,
+#tray,
+#backlight,
+#network {
+    padding: 4px 8px;
+    background-color: #ccd0da;
+    margin: 6px 4px;
+    margin-top: 2px;
+}
+
+#workspaces {
+    padding: 4px 4px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #4c4f69;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+#workspaces button:hover {
+    color: #d20f39;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#workspaces button.active {
+    color: #ea76cb;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#custom-powermenu {
+    color: #d20f39;
+    margin-right: 8px;
+}
+
+#custom-notification {
+    color: #df8e1d;
+}
+
+#network {
+    color: #04a5e5;
+}
+
+#backlight {
+    color: #1e66f5;
+    border-radius: 10px 0px 0px 10px;
+    margin-right: 0px;
+}
+
+#pulseaudio {
+    color: #179299;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#temperature {
+    color: #40a02b;
+}
+
+#memory {
+    color: #df8e1d;
+}
+
+#network.speed {
+    color: #8839ef;
+    min-width: 200px;
+}
+
+#cpu {
+    color: #1e66f5;
+    min-width: 50px;
+    margin-left: 8px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#cpu.freq {
+    color: #1e66f5;
+    min-width: 70px;
+    margin-left: 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#cpu.cores {
+    color: #1e66f5;
+    margin-left: 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#clock {
+    color: #4c4f69;
+}
+
+#battery {
+    color: #d20f39;
+    border-radius: 0px 10px 10px 0px;
+    margin-left: 0px;
+}
+
+#battery.warning {
+    background: orange;
+}
+
+#battery.critical {
+    background: red;
+}
+
+#temperature.critical {
+    background: red;
+}

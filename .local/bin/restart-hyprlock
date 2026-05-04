@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source "$HOME/.local/lib/help.sh"
+set -e
+
+check_help "$1" && show_help "restart hyprlock after a crash" && exit 0
+
+hyprctl "keyword misc:allow_session_lock_restore 1"
+hyprctl "dispatch exec hyprlock"
+
+echo "If this doesn't work try to killall hyprlock and repeat."

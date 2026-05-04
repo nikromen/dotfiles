@@ -1,0 +1,54 @@
+alias dns="dnf search"
+alias dni="sudo dnf install"
+alias dnu="sudo dnf update"
+alias dnin="dnf info"
+
+alias ..="cd .."
+alias ..2="cd ../../"
+alias ..3="cd ../../../"
+alias ..4="cd ../../../../"
+alias ..5="cd ../../../../../"
+
+alias g="git"
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit"
+alias gs="git status"
+alias gsw="git switch"
+alias gd="git diff"
+alias gbl="git blame"
+alias gf="git fetch"
+alias gpr="git pull --rebase --recurse-submodules"
+alias gr="git rebase"
+alias gri="git rebase -i"
+alias grc="git rebase --continue"
+alias gra="git rebase --abort"
+
+alias grf1="grf --autocommit 1"
+
+alias df="df -h"
+alias ls="ls -lhaZ --color=auto"
+
+alias pc="podman-compose"
+alias pps="podman ps -a"
+alias pi="podman image"
+alias pils="podman image list -a"
+alias pn="podman network"
+alias pnls="podman network ls"
+alias prm='podman rm -f $(podman ps -qa)'
+
+alias p-c="pre-commit run --all-files"
+
+alias sd="sudo su -"
+
+alias sc="systemctl"
+alias scu="systemctl --user"
+
+alias cdv='cd "$vercajk"'
+alias cdvd='cd "$vercajk/dotfiles"'
+
+alias vim="nvim"
+
+alias untar="tar -xvzf"
+alias tar-ls="tar -tvf"
+alias tar-create="tar -czvf"

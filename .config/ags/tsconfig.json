@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "baseUrl": ".",
+        "checkJs": true,
+        "lib": ["ES2022"],
+        "module": "ES2022",
+        "noImplicitAny": false,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ES2022",
+        "typeRoots": ["./types", "./node_modules/@girs"]
+    }
+}

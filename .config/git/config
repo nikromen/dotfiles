@@ -1,0 +1,25 @@
+[user]
+    name = Jiri Kyjovsky
+    email = j1.kyjovsky@gmail.com
+[core]
+    editor = nvim
+    excludesfile = ~/.config/git/ignore
+[pull]
+    rebase = true
+[rebase]
+    autoStash = true
+[alias]
+    adog = log --all --decorate --oneline --graph
+[init]
+	defaultBranch = main
+[safe]
+	directory = /srv/shared-documents/git-repos/vercajk
+	directory = /srv/shared-documents/school/diplomka/repo
+	directory = /srv/shared-documents/school/diplomka/rpmeta
+[credential]
+	helper = libsecret
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

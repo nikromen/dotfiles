@@ -1,0 +1,49 @@
+name: Dotfiles CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  shellcheck:
+    name: Shellcheck scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+      - name: Run shellcheck on bin scripts
+        run: |
+          find .local/bin -type f -executable | while read script; do
+            if head -1 "$script" | grep -q "bash\|sh"; then
+              shellcheck "$script" || true
+            fi
+          done
+      - name: Run shellcheck on bash config
+        run: |
+          for f in .config/bash/aliases .config/bash/custom_scripts; do
+            if [ -f "$f" ]; then
+              shellcheck -s bash "$f" || true
+            fi
+          done
+
+  stow-check:
+    name: Verify stow compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install stow
+        run: sudo apt-get install -y stow
+      - name: Dry-run stow into temp directory
+        run: |
+          mkdir -p /tmp/stow-test
+          stow -n -v -R . --target=/tmp/stow-test 2>&1 | tee /tmp/stow-output.txt
+          if grep -q "ERROR" /tmp/stow-output.txt; then
+            echo "Stow reported errors!"
+            exit 1
+          fi

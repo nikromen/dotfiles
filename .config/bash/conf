@@ -1,0 +1,12 @@
+# to force crontab use vim as default
+export VISUAL=nvim
+
+export EDITOR="nvim"
+
+# tell docker-compose where emulated socket is, command below is configured in
+# the corresponding file for dynamic switching between podman and docker
+# via container-switch tool
+# export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/podman/podman.sock
+if [ -e $HOME/.config/bash/.docker_host ]; then
+    source $HOME/.config/bash/.docker_host
+fi
